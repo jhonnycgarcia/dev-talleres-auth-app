@@ -23,6 +23,7 @@ export class AppComponent {
   });
 
   public authStatusChangedEffect = effect(() => {
+    console.log('authStatusChangedEffect', this.authSrv.authStatus());
     switch (this.authSrv.authStatus()) {
 
       case AuthStatus.authenticated:
