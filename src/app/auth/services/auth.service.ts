@@ -18,7 +18,12 @@ export class AuthService {
   public currentUser = computed(() => this._currentUser());
   public authStatus = computed(() => this._authStatus());
 
+  constructor() {
+    this.checkAuthStatus().subscribe();
+  }
+
   private setAuthentication(user: User, token: string): boolean {
+    console.log('setAuthentication');
     this._currentUser.set(user);
     this._authStatus.set(AuthStatus.authenticated);
     localStorage.setItem('token', token);
@@ -54,6 +59,5 @@ export class AuthService {
         })
       );
   }
-
 
 }
